@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+
+    // TODO - iterate over the lines of US.txt and INSERTs data into the 'places' table
+    
+    require("../includes/functions.php");
+    
+    if ($argc != 2)
+    {
+        print("usage: ./import /path/to/file");
+        return 1;
+    }
+    
+    $file = $argv[1];
+    
+    if (file_exists($file) && is_readable($file))
+    {
+        $row = 0;
+        $handle = fopen($file, 'r');
+        
+        while(($data = fgetcsv($handle, 100, "\t")) !== FALSE)
+        {
+            $num = count($data);
+            print_r(array_values($data));
+            
+            $query = query("INSERT INTO places (country_code, postal_code, place_name, admin_name1, admin_code1, admin_name2, admin_code2, admin_name3, admin_code3, latitude, longitude, accuracy) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ", $data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9],$data[10], $data[11]); 
+            if ($query === false)
+            {
+                print("Error while inserting data.\n");
+                return 2;
+            }
+            $row++;
+        }
+        
+        // display results
+        print("File Imported:\nLines read: " . $row . "\n");
+    
+        fclose($handle);
+    }
+    else
+    {
+        print("Error opening file.\n");
+        return 3;
+    }
+    
+
+?>
