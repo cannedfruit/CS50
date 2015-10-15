@@ -1,0 +1,20 @@
+0.  Pneumonoultramicroscopicsilicovolcanoconiosis is the longest word in the Oxford English Dictionary.
+    It refers to a lung disease caused by inhaling very fine ash and sand dust.
+1.  The function getrusage or get resource usage returns the usage statistics for the calling process and its children.
+    These statistics include CPU time used, memory usage, inter-process communication, sockets and signals.
+2.  16.
+3.  The values of before and after have not been defined globally and, as a result, a pointer is needed for the function calculate to access the values outside of main.
+4.  The for loop iterates through the entire file until the end of file is reached.
+    If the character being pointed at is alphabetical or an apostrophe then it is copied into the word index.
+    If a word is too long or has number, the index will skip over those words until it reaches a new word that starts with a letter.
+    Once a non-alphanumeric or apostrophe character is reached such as a space or newline, the word will be appended with a null terminator and the index counter will return to zero and the word counter will increase by one.
+    The function check is then called upon using the dictionary.h library which links to the dictionary.c file.
+    If a word is found to be mispelled, the mispelled words counter increases. Finally, the for loop calculates the amount of time it took to run the loop.
+5.  The fscanf function ignores any whitespace and as such it would be impossible to detect the end of a word in the dictionary.
+    The fgetc function allows more control for testing each character.
+6.  The functions check and load do not need to modify any of the values they are pointing to and by declaring them as constant, it ensures that these pointers are not altered by accident in the rest of the program.
+7.  The library structure used was a trie where each trie node contained a boolean indicating an end of a word and an array of children.
+    Each array space represents a letter (0-25) or an apostrophe (26) and is initialized to null if no word has been entered.
+8.  The first time I ran the code it took a total of 1.31 seconds. Upon rebooting the computer, it took a total of 0.65 seconds.
+9.  I attempted to implement a block allocation but was not successful. Finally, I restarted the computer and found that just in doing so I halved my speed.
+10. The trie consumes a lot of time in memory allocation. I have researched that this can be remedied with a bucket allocation but was not able to implement it.
