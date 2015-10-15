@@ -1,0 +1,46 @@
+0.  How many different colors does each format support?
+    BMP     16 million
+    JPEG    16 million
+    GIF     256
+    PNG     16 million
+1.  Which of the formats supports animation? GIF
+2.  What’s the difference between lossy and lossless compression?
+    Lossless compression compresses without any loss in data whereas there is data loss in lossy.
+3.  Which of these formats is lossy-compressed? JPEG
+4.  What happens, technically speaking, when a file is deleted on a FAT file system?
+    The file's reference is removed from the directory and its blocks are reclassified as free.
+5.  What can someone like you do to ensure (with high probability) that files you delete cannot be recovered?
+    Files can be more surely deleted if all the information is written over or if the hard drive is degaussed
+6.  What's stdint.h?
+    A C library specifying interger types of exact widths, minimum widths, fastest types, pointer types and
+    types with the greatest widths.
+7.  What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
+    Depending on your processor, an interger can be different lengths. If you want 
+    to design a program that requires a fixed-width accross platforms then it is 
+    best to use these fixed-width intergers. In our program, we require our bitmap 
+    header to be a certain length in order to check if it's the right file type and 
+    therefore we must ensure the header is compiled into the right length.
+8.  How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively? 
+    (Assume a 32-bit architecture like the CS50 Appliance.)
+    A BYTE is 1 byte, a DWORD is 32 bytes, a LONG is 32 bytes and a WORD is 16 bytes.
+9.  What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be?
+    (Leading bytes used to identify file formats (with high probability) are generally called "magic numbers.)"
+    0x4d42
+10. What’s the difference between bfSize and biSize?
+    The bfSize stores the size of the whole BMP file 
+    while the biSizeImage stores only the size of the image so the pixels plus the padding.
+11. What does it mean if biHeight is negative?
+    The biHeight being negative means that the image is stored in a top-down format and the first pixel is in the top-left.
+12. What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
+    biBitCount
+13. Why might fopen return NULL in copy.c:37?
+    If there is not enough memory to create the output file.
+14. Why is the third argument to fread always 1 in our code?
+    Only reading one unit not multiple.
+15. What value does copy.c:70 assign padding if bi.biWidth is 3
+    1
+16. What does fseek do?
+    It changes the location of the file pointer.
+17. What is SEEK_CUR?
+    Offsets the current location of the file pointer.
+18. Rob Bowden
